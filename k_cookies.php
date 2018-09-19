@@ -128,6 +128,7 @@ class k_Cookies extends Module
         return (bool) Configuration::updateValue($this->prefix.'CMS',0) &&
             Configuration::updateValue($this->prefix.'hashtag','tarteaucitron') &&
             Configuration::updateValue($this->prefix.'highPrivacy',0) &&
+            Configuration::updateValue($this->prefix.'AcceptAllCta',0) &&
             Configuration::updateValue($this->prefix.'orientation','top') &&
             Configuration::updateValue($this->prefix.'adblocker',0) &&
             Configuration::updateValue($this->prefix.'showAlertSmall',0) &&
@@ -155,6 +156,7 @@ class k_Cookies extends Module
             Configuration::deleteByName($this->prefix.'CMS') &&
             Configuration::deleteByName($this->prefix.'hashtag') &&
             Configuration::deleteByName($this->prefix.'highPrivacy') &&
+            Configuration::deleteByName($this->prefix.'AcceptAllCta') &&
             Configuration::deleteByName($this->prefix.'orientation') &&
             Configuration::deleteByName($this->prefix.'adblocker') &&
             Configuration::deleteByName($this->prefix.'showAlertSmall') &&
@@ -316,6 +318,7 @@ class k_Cookies extends Module
         $others = [
             'iframe',
             'issuu',
+            'matterport',
         ];
 
         $return .= $this->fetch($this->local_path.'/views/templates/admin/configure.tpl');
@@ -394,6 +397,7 @@ class k_Cookies extends Module
             Configuration::updateValue($this->prefix.'CMS', Tools::getValue($this->prefix.'CMS'));
             Configuration::updateValue($this->prefix.'hashtag', Tools::getValue($this->prefix.'hashtag'));
             Configuration::updateValue($this->prefix.'highPrivacy', Tools::getValue($this->prefix.'highPrivacy'));
+            Configuration::updateValue($this->prefix.'AcceptAllCta', Tools::getValue($this->prefix.'AcceptAllCta'));
             Configuration::updateValue($this->prefix.'orientation', Tools::getValue($this->prefix.'orientation'));
             Configuration::updateValue($this->prefix.'adblocker', Tools::getValue($this->prefix.'adblocker'));
             Configuration::updateValue($this->prefix.'showAlertSmall', Tools::getValue($this->prefix.'showAlertSmall'));
@@ -493,6 +497,26 @@ class k_Cookies extends Module
                             ),
                             array(
                                 'id' => 'highprivacy_off',
+                                'value' => 0,
+                                'label' => $this->trans('No', array(), 'Admin.Global'),
+                            ),
+                        ),
+                    ),
+                    array(
+                        'type' => 'switch',
+                        'label' => $this->l('Accept All Cta'),
+                        'name' => $this->prefix.'AcceptAllCta',
+                        'hint' => $this->l('Show the accept all button when highPrivacy on'),
+                        'required' => true,
+                        'is_bool' => true,
+                        'values' => array(
+                            array(
+                                'id' => 'acceptallcta_on',
+                                'value' => 1,
+                                'label' => $this->trans('Yes', array(), 'Admin.Global'),
+                            ),
+                            array(
+                                'id' => 'acceptallcta_off',
                                 'value' => 0,
                                 'label' => $this->trans('No', array(), 'Admin.Global'),
                             ),
@@ -657,6 +681,7 @@ class k_Cookies extends Module
             $this->prefix.'CMS' => Configuration::get($this->prefix.'CMS'),
             $this->prefix.'hashtag' => Configuration::get($this->prefix.'hashtag'),
             $this->prefix.'highPrivacy' => Configuration::get($this->prefix.'highPrivacy'),
+            $this->prefix.'AcceptAllCta' => Configuration::get($this->prefix.'AcceptAllCta'),
             $this->prefix.'orientation' => Configuration::get($this->prefix.'orientation'),
             $this->prefix.'adblocker' => Configuration::get($this->prefix.'adblocker'),
             $this->prefix.'showAlertSmall' => Configuration::get($this->prefix.'showAlertSmall'),
@@ -1518,6 +1543,16 @@ class k_Cookies extends Module
     }
 
     /**
+     * Get Web content (Matterport) Fields
+     * @return array
+     */
+    protected function getMatterportFields()
+    {
+        $legend = $this->l('Matterport');
+        return ['legend' => $legend, 'inputs' => []];
+    }
+
+    /**
      * Get Google jsapi Fields
      * @return array
      */
@@ -1982,6 +2017,7 @@ class k_Cookies extends Module
         $this->smarty->assign(array(
             'hashtag' => Configuration::get($this->prefix.'hashtag'),
             'highPrivacy' => Configuration::get($this->prefix.'highPrivacy'),
+            'AcceptAllCta' => Configuration::get($this->prefix.'AcceptAllCta'),
             'orientation' => Configuration::get($this->prefix.'orientation'),
             'adblocker' => Configuration::get($this->prefix.'adblocker'),
             'showAlertSmall' => Configuration::get($this->prefix.'showAlertSmall'),

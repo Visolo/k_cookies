@@ -1,0 +1,20 @@
+Commit 201809191631
+
+Cambios en módulo:
+- Actualizada versión de tarteaucitron a versión 20180914
+- Se mantiene tarteaucitron.services.js de la versión original del módulo (se actualizará más adelante)
+- Añadido servicio Matterport
+- Añadida opción AcceptAllCta en módulo
+- Añadidas cadenas de texto necesarias para la versión actualizada de tarteaucitron
+
+Cambios en tarteaucitron.js:
+- Pequeños cambios en CSS para que se muestren correctamente todos los textos
+- Corregido comportamiento con opción cookieslist = false (se mostraban en el panel de gestión)
+- Corregido comportamiento de los botones en panel de gestión (no se ponían de los colores que tocaban)
+- Añadido servicio Matterport
+
+Pendiente:
+- Corregir las traducciones del módulo
+- Poner opción para textos
+- Revisar opciones de colores desde configuración del módulo
+- Permitir cambiar nombre de la cookie desde configuración del módulo

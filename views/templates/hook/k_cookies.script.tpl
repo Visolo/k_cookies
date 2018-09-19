@@ -1,8 +1,10 @@
 <script>
   tarteaucitron.init({
-    "cookieCMSLink": "{$cookieCMSLink}", /* Page explicative sur les cookies */
+    //"cookieCMSLink": "{$cookieCMSLink}", /* Page explicative sur les cookies */
+    "privacyUrl": "{$cookieCMSLink}", /* Page explicative sur les cookies */
     "hashtag": "#{$hashtag}", /* Ouverture automatique du panel avec le hashtag */
     "highPrivacy": {if $highPrivacy}true{else}false{/if}, /* désactiver le consentement implicite (en naviguant) ? */
+    "AcceptAllCta": {if $AcceptAllCta}true{else}false{/if}, /* Show the accept all button when highPrivacy on */
     "orientation": "{$orientation}", /* le bandeau doit être en haut (top) ou en bas (bottom) ? */
     "adblocker": {if $adblocker}true{else}false{/if}, /* Afficher un message si un adblocker est détecté */
     "showAlertSmall": {if $showAlertSmall}true{else}false{/if}, /* afficher le petit bandeau en bas à droite ? */
@@ -22,15 +24,21 @@
     "adblock": "{l s='Hello! This site is transparent and lets you chose the 3rd party services you want to allow.' mod='k_cookies'}",
     "adblock_call" : "{l s='Please disable your adblocker to start customizing.' mod='k_cookies'}",
     "reload": "{l s='Refresh the page' mod='k_cookies'}",
+
     "alertBigScroll": "{l s='By continuing to scroll,' mod='k_cookies'}",
     "alertBigClick": "{l s='If you continue to browse this website,' mod='k_cookies'}",
     "alertBig": "{l s='you are allowing all third-party services' mod='k_cookies'}",
+
     "alertBigPrivacy": "{l s='This site uses cookies and gives you control over what you want to activate' mod='k_cookies'}",
     "alertSmall": "{l s='Manage services' mod='k_cookies'}",
     "personalize": "{l s='Personalize' mod='k_cookies'}",
     "acceptAll": "{l s='OK, accept all' mod='k_cookies'}",
     "close": "{l s='Close' mod='k_cookies'}",
+
+    "privacyUrl": "{l s='Privacy policy' mod='k_cookies'}",
+
     "all": "{l s='Preference for all services' mod='k_cookies'}",
+
     "info": "{l s='Protecting your privacy' mod='k_cookies'}",
     "disclaimer": "{l s='By allowing these third party services, you accept their cookies and the use of tracking technologies necessary for their proper functioning.' mod='k_cookies'}",
     "allow": "{l s='Allow' mod='k_cookies'}",
@@ -42,7 +50,17 @@
     "more": "{l s='Read more' mod='k_cookies'}",
     "source": "{l s='View the official website' mod='k_cookies'}",
     "credit": "{l s='Cookies manager by tarteaucitron.js' mod='k_cookies'}",
+
+    "toggleInfoBox": "{l s='Show/hide informations about cookie storage' mod='k_cookies'}",
+    "title": "{l s='Cookies management panel' mod='k_cookies'}",
+    "cookieDetail": "{l s='Cookie detail for' mod='k_cookies'}",
+    "ourSite": "{l s='on our site' mod='k_cookies'}",
+    "newWindow": "{l s='(new window)' mod='k_cookies'}",
+    "allowAll": "{l s='Allow all cookies' mod='k_cookies'}",
+    "denyAll": "{l s='Deny all cookies' mod='k_cookies'}",
+
     "fallback": "{l s='is disabled.' mod='k_cookies'}",
+
     "ads": {
       "title": "{l s='Advertising network' mod='k_cookies'}",
       "details": "{l s='Ad networks can generate revenue by selling advertising space on the site.' mod='k_cookies'}"
